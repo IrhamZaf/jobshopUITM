@@ -84,8 +84,24 @@
                                         </div>
 
                                         <div class="mt-4">
-                                            <form class="needs-validation" novalidate action="{{ route('register.store') }}" method="POST">
+                                            <form class="needs-validation" novalidate action="{{ route('register') }}" method="POST">
                                                 @csrf
+                                                <div class="mb-3">
+                                                    <label for="first_name" class="form-label">First Name <span class="text-danger">*</span></label>
+                                                    <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Enter first name" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter first name
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="last_name" class="form-label">Last Name <span class="text-danger">*</span></label>
+                                                    <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Enter last name" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter last name
+                                                    </div>
+                                                </div>
+
                                                 <div class="mb-3">
                                                     <label for="useremail" class="form-label">Email <span class="text-danger">*</span></label>
                                                     <input type="email" name="email" class="form-control" id="useremail" placeholder="Enter email address" required>
@@ -93,14 +109,9 @@
                                                         Please enter email
                                                     </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-                                                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required>
-                                                    <div class="invalid-feedback">
-                                                        Please enter name
-                                                    </div>
-                                                </div>
-                                        
+
+                        
+
                                                 <div class="mb-3">
                                                     <label class="form-label" for="password-input">Password <span class="text-danger">*</span></label>
                                                     <div class="position-relative auth-pass-inputgroup">
@@ -182,16 +193,16 @@
     <!-- end auth-page-wrapper -->
 
     <!-- JAVASCRIPT -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="assets/js/plugins.js"></script>
+    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <!-- validation init -->
-    <script src="assets/js/pages/form-validation.init.js"></script>
+    <script src="{{ asset('assets/js/pages/form-validation.init.js') }}"></script>
     <!-- password create init -->
-    <script src="assets/js/pages/passowrd-create.init.js"></script>
+    <script src="{{ asset('assets/js/pages/password-create.init.js') }}"></script>
 </body>
 
 </html>

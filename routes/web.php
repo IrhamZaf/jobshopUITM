@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\JobPostingController;
+use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\JobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,30 +19,36 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
 
-Route::get('/landing', function () {
-    return view('landing');
-})->name('landing');
+
 
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
 
 
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register.store');
 
 // Route for students job list
-Route::get('/students/job-list', function () {
-    return view('students.job-list');
-})->name('students.job-list');
+Route::get('/students/job-list', [JobPostingController::class, 'studentIndex'])->name('students.job-list');
+Route::get('/students/jobpreview/{jobPosting}', [JobPostingController::class, 'studentShow'])->name('students.jobpreview');
+
+Route::get('/profile', function () {
+    return view('profile.profile');
+})->name('profile');
 
 
 
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('editprofile');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('updateprofile');
 
 // Route::group(['middleware' => ['role:admin']], function () {
 //     // Admin routes
@@ -60,3 +70,14 @@ Route::get('/students/job-list', function () {
 //         return view('student.dashboard');
 //     })->name('student.dashboard');
 // });
+
+// Add resource routes for job postings (for companies to manage their jobs)
+Route::resource('job-postings', JobPostingController::class);
+
+Route::middleware('auth')->group(function () {
+    Route::post('/resume/upload', [ResumeController::class, 'store'])->name('resume.upload');
+    Route::delete('/resume/{resume}', [ResumeController::class, 'destroy'])->name('resume.destroy');
+    Route::post('/job/{jobPosting}/apply', [JobPostingController::class, 'apply'])->name('job.apply');
+});
+
+Route::get('/students/jobs/filter', [JobController::class, 'filter'])->name('jobs.filter');

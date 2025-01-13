@@ -3,27 +3,39 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/students/job-list';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function login(Request $request)
     {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('auth')->only('logout');
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // Throttle login attempts
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+            // Redirect to a common dashboard
+            // return redirect()->intended('students.job-list');
+            return redirect()->route('students.job-list');
+        }
+
+        return back()->withErrors([
+            'credentials' => 'The provided credentials do not match our records.',
+        ]);
     }
-} 
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login')->with('status', 'You have been logged out!');
+    }
+}
+

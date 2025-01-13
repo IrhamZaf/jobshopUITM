@@ -43,4 +43,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function resumes()
+    {
+        return $this->hasMany(Resume::class);
+    }
+
+    public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class);
+    }
+
+    public function hasAppliedTo(JobPosting $jobPosting)
+    {
+        return $this->jobApplications()->where('job_posting_id', $jobPosting->id)->exists();
+    }
 }
