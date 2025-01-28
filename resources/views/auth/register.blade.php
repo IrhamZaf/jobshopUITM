@@ -86,9 +86,21 @@
                                         <div class="mt-4">
                                             <form class="needs-validation" novalidate action="{{ route('register') }}" method="POST">
                                                 @csrf
+                                                
+                                                {{-- Add error messages display --}}
+                                                @if ($errors->any())
+                                                    <div class="alert alert-danger">
+                                                        <ul class="mb-0">
+                                                            @foreach ($errors->all() as $error)
+                                                                <li>{{ $error }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                @endif
+
                                                 <div class="mb-3">
                                                     <label for="first_name" class="form-label">First Name <span class="text-danger">*</span></label>
-                                                    <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Enter first name" required>
+                                                    <input type="text" name="firstname" class="form-control" id="first_name" placeholder="Enter first name" required>
                                                     <div class="invalid-feedback">
                                                         Please enter first name
                                                     </div>
@@ -96,7 +108,7 @@
 
                                                 <div class="mb-3">
                                                     <label for="last_name" class="form-label">Last Name <span class="text-danger">*</span></label>
-                                                    <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Enter last name" required>
+                                                    <input type="text" name="lastname" class="form-control" id="last_name" placeholder="Enter last name" required>
                                                     <div class="invalid-feedback">
                                                         Please enter last name
                                                     </div>
@@ -110,27 +122,36 @@
                                                     </div>
                                                 </div>
 
-                        
-
                                                 <div class="mb-3">
                                                     <label class="form-label" for="password-input">Password <span class="text-danger">*</span></label>
                                                     <div class="position-relative auth-pass-inputgroup">
-                                                        <input type="password" name="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                                        <input type="password" 
+                                                               name="password" 
+                                                               class="form-control pe-5 password-input @error('password') is-invalid @enderror"
+                                                               onpaste="return false" 
+                                                               placeholder="Enter password" 
+                                                               id="password-input"
+                                                               required>
                                                         <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
-                                                        <div class="invalid-feedback">
-                                                            Please enter password
-                                                        </div>
+                                                        @error('password')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                         
                                                 <div class="mb-3">
                                                     <label class="form-label" for="confirm-password-input">Confirm Password <span class="text-danger">*</span></label>
                                                     <div class="position-relative auth-pass-inputgroup">
-                                                        <input type="password" name="password_confirmation" class="form-control pe-5 password-input" onpaste="return false" placeholder="Confirm password" id="confirm-password-input" aria-describedby="confirmPasswordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                                        <input type="password" 
+                                                               name="password_confirmation" 
+                                                               class="form-control pe-5 password-input"
+                                                               onpaste="return false" 
+                                                               placeholder="Confirm password" 
+                                                               id="confirm-password-input"
+                                                               required>
                                                         <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="confirm-password-addon"><i class="ri-eye-fill align-middle"></i></button>
-                                                        <div class="invalid-feedback">
-                                                            Passwords do not match
-                                                        </div>
                                                     </div>
                                                 </div>
                                         

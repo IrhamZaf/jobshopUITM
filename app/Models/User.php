@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -18,10 +19,18 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
         'role',
+        'phone_number',
+        'city',
+        'country',
+        'zip_code',
+        'description',
+        'company_name',
+        'company_website'
     ];
 
     /**
@@ -43,6 +52,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Example roles property (you may have a different implementation)
+    protected $roles = []; // This should be replaced with your actual roles logic
+
+    public function hasRole($role)
+    {
+        // Check if the user has the specified role
+        return in_array($role, $this->roles);
+    }
 
     public function resumes()
     {

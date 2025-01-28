@@ -28,14 +28,14 @@
 <body>
 
     <!-- auth-page wrapper -->
-    <div class="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
-        <div class="bg-overlay"></div>
+    <div class="auth-page-wrapper bg-light py-5 d-flex justify-content-center align-items-center min-vh-100">
+        {{-- <div class="bg-overlay"></div> --}}
         <!-- auth-page content -->
         <div class="auth-page-content overflow-hidden pt-lg-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card overflow-hidden">
+                        <div class="card border card-border-primary overflow-hidden">
                             <div class="row g-0">
                                 <div class="col-lg-6">
                                     <div class="p-lg-5 p-4 auth-one-bg h-100">
@@ -43,7 +43,7 @@
                                         <div class="position-relative h-100 d-flex flex-column">
                                             <div class="mb-4">
                                                 <a href="index.html" class="d-block">
-                                                    <img src="assets/images/uitmlogo.png" alt="" height="70">
+                                                    <img src="assets/images/logo-jobshop1.png" alt="" height="70">
                                                 </a>
                                             </div>
                                             <div class="mt-auto">

@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,12 +35,22 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 
-Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register.store');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
-// Route for students job list
+// Route for students job 
+Route::get('/dashboard', function () {
+    return view('students.dashboard');
+})->name('students.dashboard');
 Route::get('/students/job-list', [JobPostingController::class, 'studentIndex'])->name('students.job-list');
 Route::get('/students/jobpreview/{jobPosting}', [JobPostingController::class, 'studentShow'])->name('students.jobpreview');
+
+//company
+Route::get('/candidate', function () {
+    return view('company.candidate');
+})->name('company.candidate');
+
+Route::get('/company/joblist', [JobPostingController::class, 'companyJobList'])->name('company.joblist');
 
 Route::get('/profile', function () {
     return view('profile.profile');

@@ -19,27 +19,27 @@ class RegisterController extends Controller
         // Validate the incoming request data
         $request->validate([
             'email' => 'required|email|unique:users,email',
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
             'password' => 'required|string|min:8|confirmed',
-            'phone_number' => 'nullable|string|max:255',
+            'phonenumber' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:255',
             'country' => 'nullable|string|max:255',
-            'zip_code' => 'nullable|string|max:255',
+            'zipcode' => 'nullable|string|max:255',
             'description' => 'nullable|string',
         ]);
 
         // Create a new user instance and save it to the database
-        User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
+        $user = User::create([
+            'first_name' => $request->firstname,
+            'last_name' => $request->lastname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'student', // Hardcoded as student
-            'phone_number' => $request->phone_number,
+            'role' => 'student',
+            'phone_number' => $request->phonenumber,
             'city' => $request->city,
             'country' => $request->country,
-            'zip_code' => $request->zip_code,
+            'zip_code' => $request->zipcode,
             'description' => $request->description,
         ]);
 

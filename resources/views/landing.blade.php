@@ -34,9 +34,9 @@
         <nav class="navbar navbar-expand-lg navbar-landing fixed-top job-navbar" id="navbar">
             <div class="container-fluid custom-container">
                 <a class="navbar-brand" href="index.html">
-                    <img src="assets/images/uitmlogo.png" class="card-logo card-logo-dark" alt="logo dark"
+                    <img src="assets/images/logo-jobshop1.png" class="card-logo card-logo-dark" alt="logo dark"
                         height="60">
-                    <img src="assets/images/uitmlogo.png" class="card-logo card-logo-light" alt="logo light"
+                    <img src="assets/images/logo-jobshop1.png" class="card-logo card-logo-light" alt="logo light"
                         height="60">
                 </a>
                 <button class="navbar-toggler py-0 fs-20 text-body" type="button" data-bs-toggle="collapse"
@@ -73,7 +73,7 @@
 
         <!-- start hero section -->
         <section class="section job-hero-section pb-0" id="hero"
-            style="background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('assets/images/UITM.jpg'); background-size: cover; background-position: center; background-attachment: fixed; height: 100vh; overflow: hidden;">
+            style="background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('assets/images/UITM.jpg'); background-size: cover; background-position: center; background-attachment: fixed; height: 100vh; overflow: hidden;">
             <div class="container h-100">
                 <div class="row h-100 justify-content-center align-items-center">
                     <div class="col-lg-8 text-center">

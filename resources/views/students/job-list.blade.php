@@ -103,7 +103,7 @@
             <div class="row" id="job-list">
                 @forelse ($jobs as $job)
                     <div class="col-lg-3 col-md-6">
-                        <div class="card">
+                        <div class="card bg-secondary">
                             <div class="card-body">
                                 <div class="avatar-sm mb-4">
                                     <div class="avatar-title bg-light rounded">
@@ -112,34 +112,34 @@
                                     </div>
                                 </div>
                                 <a href="#!">
-                                    <h5>{{ $job->title }}</h5>
+                                    <h5 class="text-light">{{ $job->title }}</h5>
                                 </a>
-                                <p class="text-muted">{{ $job->user->company_name ?? 'Company Name' }}</p>
+                                <p class="text-light">{{ $job->user->company_name ?? 'Company Name' }}</p>
                                 <div class="d-flex gap-4 mb-3">
-                                    <div>
-                                        <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i>
+                                    <div class="text-light">
+                                        <i class="ri-map-pin-2-line text-light me-1 align-bottom"></i>
                                         {{ $job->location ?? 'Location' }}
                                     </div>
-                                    <div>
-                                        <i class="ri-time-line text-primary me-1 align-bottom"></i>
+                                    <div class="text-light">
+                                        <i class="ri-time-line text-light me-1 align-bottom"></i>
                                         {{ $job->created_at->format('d M, Y') }}
                                     </div>
                                 </div>
-                                <p class="text-muted">{{ Str::limit($job->job_description, 100) }}</p>
+                                <p class="text-light">{{ Str::limit($job->job_description, 100) }}</p>
                                 <div class="hstack gap-2">
-                                    <span class="badge bg-success-subtle text-success">
+                                    <span class="badge bg-success text-light">
                                         {{ ucfirst($job->employment_type) }}
                                     </span>
                                     @if($job->salary_min && $job->salary_max)
-                                        <span class="badge bg-primary-subtle text-primary">
+                                        <span class="badge bg-primary-subtle text-light">
                                             ${{ number_format($job->salary_min) }} - ${{ number_format($job->salary_max) }}
                                         </span>
                                     @endif
                                 </div>
                                 <div class="mt-4 hstack gap-2">
-                                    <a href="#!" class="btn btn-soft-primary w-100">Apply Job</a>
+                                    <a href="#!" class="btn btn-primary w-100">Apply Job</a>
                                     <a href="{{ route('students.jobpreview', $job->id) }}" 
-                                       class="btn btn-soft-success w-100">Overview</a>
+                                       class="btn btn-success w-100">Overview</a>
                                 </div>
                             </div>
                         </div>

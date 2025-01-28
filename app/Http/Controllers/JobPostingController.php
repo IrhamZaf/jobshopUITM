@@ -109,4 +109,12 @@ class JobPostingController extends Controller
 
         return redirect()->back()->with('success', 'Application submitted successfully!');
     }
+
+    public function companyJobList()
+    {
+        // Assuming you have a way to get the company ID or user ID
+        $jobs = JobPosting::where('user_id', auth()->id())->get(); // Adjust the query as needed
+
+        return view('company.joblist', compact('jobs'));
+    }
 }
