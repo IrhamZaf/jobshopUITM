@@ -28,14 +28,14 @@
 <body>
 
     <!-- auth-page wrapper -->
-    <div class="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
-        <div class="bg-overlay"></div>
+    <div class="auth-page-wrapper bg-light py-5 d-flex justify-content-center align-items-center min-vh-100">
+        {{-- <div class="bg-overlay"></div> --}}
         <!-- auth-page content -->
         <div class="auth-page-content overflow-hidden pt-lg-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card overflow-hidden m-0">
+                        <div class="card border card-border-primary overflow-hidden m-0">
                             <div class="row justify-content-center g-0">
                                 <div class="col-lg-6">
                                     <div class="p-lg-5 p-4 auth-one-bg h-100">
@@ -43,7 +43,7 @@
                                         <div class="position-relative h-100 d-flex flex-column">
                                             <div class="mb-4">
                                                 <a href="index.html" class="d-block">
-                                                    <img src="assets/images/uitmlogo.png" alt="" height="70">
+                                                    <img src="assets/images/logo-jobshop1.png" alt="" height="70">
                                                 </a>
                                             </div>
                                             <div class="mt-auto">
@@ -80,7 +80,7 @@
                                     <div class="p-lg-5 p-4">
                                         <div>
                                             <h5 class="text-primary">Register Account</h5>
-                                            <p class="text-muted">Get your Free Velzon account now.</p>
+                                            <p class="text-muted">Sign up to JobShop UiTM.</p>
                                         </div>
 
                                         <div class="mt-4">
@@ -154,12 +154,46 @@
                                                         <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="confirm-password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                                     </div>
                                                 </div>
+
+                                                <script>
+                                                    // Toggle password visibility
+                                                    document.getElementById('password-addon').addEventListener('click', function() {
+                                                        var passwordInput = document.getElementById('password-input');
+                                                        var icon = this.querySelector('i');
+                                                        
+                                                        if (passwordInput.type === 'password') {
+                                                            passwordInput.type = 'text';
+                                                            icon.classList.remove('ri-eye-fill');
+                                                            icon.classList.add('ri-eye-off-fill');
+                                                        } else {
+                                                            passwordInput.type = 'password';
+                                                            icon.classList.remove('ri-eye-off-fill');
+                                                            icon.classList.add('ri-eye-fill');
+                                                        }
+                                                    });
+
+                                                    // Toggle confirm password visibility
+                                                    document.getElementById('confirm-password-addon').addEventListener('click', function() {
+                                                        var confirmPasswordInput = document.getElementById('confirm-password-input');
+                                                        var icon = this.querySelector('i');
+                                                        
+                                                        if (confirmPasswordInput.type === 'password') {
+                                                            confirmPasswordInput.type = 'text';
+                                                            icon.classList.remove('ri-eye-fill');
+                                                            icon.classList.add('ri-eye-off-fill');
+                                                        } else {
+                                                            confirmPasswordInput.type = 'password';
+                                                            icon.classList.remove('ri-eye-off-fill');
+                                                            icon.classList.add('ri-eye-fill');
+                                                        }
+                                                    });
+                                                </script>
                                         
                                                 {{-- <input type="hidden" name="role" value="student"> --}}
                                         
-                                                <div class="mb-4">
+                                                {{-- <div class="mb-4">
                                                     <p class="mb-0 fs-13 text-muted fst-italic">By registering you agree to the Velzon <a href="#" class="text-primary text-decoration-underline fst-normal fw-semibold">Terms of Use</a></p>
-                                                </div>
+                                                </div> --}}
                                         
                                                 <div id="password-contain" class="p-3 bg-light mb-2 rounded">
                                                     <h5 class="fs-14">Password must contain:</h5>
@@ -202,7 +236,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <p class="mb-0">&copy;
-                                <script>document.write(new Date().getFullYear())</script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+                                <script>document.write(new Date().getFullYear())</script> UiTM. Develop with <i class="mdi mdi-heart text-danger"></i> by Aimie
                             </p>
                         </div>
                     </div>

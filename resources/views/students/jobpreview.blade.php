@@ -105,7 +105,7 @@
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">Salary</td>
-                                        <td>${{ number_format($jobPosting->salary_min) }} - ${{ number_format($jobPosting->salary_max) }}</td>
+                                        <td>RM {{ number_format($jobPosting->salary_min) }} - RM {{ number_format($jobPosting->salary_max) }}</td>
                                     </tr>
                                     
                                 </tbody>
@@ -118,10 +118,74 @@
                             @else
                                 <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#applyJobModal">Apply Now</button>
                             @endif
-                            <a href="#!" class="btn btn-soft-danger btn-icon custom-toggle flex-shrink-0" data-bs-toggle="button">
-                                <span class="icon-on"><i class="ri-bookmark-line align-bottom"></i></span>
-                                <span class="icon-off"><i class="ri-bookmark-3-fill align-bottom"></i></span>
-                            </a>
+                            @if(auth()->user()->hasAppliedTo($jobPosting))
+                                <a href="#!" class="btn btn-soft-danger btn-icon custom-toggle flex-shrink-0" data-bs-toggle="modal" data-bs-target="#progressModal">
+                                    <span class="icon-on"><i class="ri-time-line align-bottom"></i></span>
+                                    <span class="icon-off"><i class="ri-time-fill align-bottom"></i></span>
+                                </a>
+                            @endif
+
+                            <!-- Progress Modal -->
+                            <div class="modal fade" id="progressModal" tabindex="-1" aria-labelledby="progressModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="progressModalLabel">Application Progress</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="mb-3">
+                                                    <div class="form-text mb-2 fs-6">
+                                                        <div class="progress" style="height: 3px;">
+                                                            <div class="progress-bar bg-success" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between mt-3">
+                                                            <div class="text-center">
+                                                                <button type="button" class="btn btn-sm btn-success rounded-pill mb-2" style="width: 2.5rem; height:2.5rem;">
+                                                                    <i class="ri-check-line"></i>
+                                                                </button>
+                                                                <h6 class="mb-1 text-success">Resume Submitted</h6>
+                                                                <small class="text-muted">Application received</small>
+                                                            </div>
+                                                            <div class="text-center">
+                                                                <button type="button" class="btn btn-sm btn-primary rounded-pill mb-2" style="width: 2.5rem; height:2.5rem;">
+                                                                    <i class="ri-search-eye-line"></i>
+                                                                </button>
+                                                                <h6 class="mb-1 text-primary">Under Review</h6>
+                                                                <small class="text-muted">Profile evaluation</small>
+                                                            </div>
+                                                            <div class="text-center">
+                                                                <button type="button" class="btn btn-sm btn-light rounded-pill mb-2" style="width: 2.5rem; height:2.5rem;">
+                                                                    <i class="ri-flag-line"></i>
+                                                                </button>
+                                                                <h6 class="mb-1">Final Result</h6>
+                                                                <small class="text-muted">Pending decision</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Danger Alert -->
+                                                <div class="alert alert-info alert-dismissible alert-additional shadow fade show" role="alert">
+                                                    <div class="alert-body">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                        <div class="d-flex">
+                                                            <div class="flex-shrink-0 me-3">
+                                                                <i class="ri-error-warning-line fs-16 align-middle"></i>
+                                                            </div>
+                                                            <div class="flex-grow-1">
+                                                                <h5 class="alert-heading">Application Under Review</h5>
+                                                                <p class="mb-0">Your application is currently under review by our hiring team. We will notify you as soon as a decision is made. Thank you for your patience and interest in this position.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- Modal -->
                         <div class="modal fade" id="applyJobModal" tabindex="-1" aria-labelledby="applyJobModalLabel" aria-hidden="true">
@@ -135,9 +199,9 @@
                                         <form action="{{ route('job.apply', $jobPosting->id) }}" method="POST">
                                             @csrf
                                             <div class="mb-3">
-                                                <label class="form-label">Applicant Information</label>
-                                                <div class="form-text mb-2">
-                                                    <strong>Name:</strong> {{ auth()->user()->first_name }}<br>
+                                                <label class="form-label fs-6">Applicant Information</label>
+                                                <div class="form-text mb-2 fs-6">
+                                                    <strong>Name:</strong> {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}<br>
                                                     <strong>Email:</strong> {{ auth()->user()->email }}
                                                 </div>
                                             </div>

@@ -80,7 +80,7 @@
                                     <div class="p-lg-5 p-4">
                                         <div>
                                             <h5 class="text-primary">Welcome Back !</h5>
-                                            <p class="text-muted">Sign in to continue to Velzon.</p>
+                                            <p class="text-muted">Sign in to continue to JobShop UiTM.</p>
                                         </div>
 
                                         <div class="mt-4">
@@ -113,10 +113,10 @@
                                                     </div>
                                                 @endif
 
-                                                <div class="form-check">
+                                                {{-- <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
                                                     <label class="form-check-label" for="auth-remember-check">Remember me</label>
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="mt-4">
                                                     <button class="btn btn-info w-100" type="submit">Sign In</button>
@@ -165,7 +165,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <p class="mb-0">&copy;
-                                <script>document.write(new Date().getFullYear())</script> UITM. Develop with <i class="mdi mdi-heart text-danger"></i> by Aimie
+                                <script>document.write(new Date().getFullYear())</script> UiTM. Develop with <i class="mdi mdi-heart text-danger"></i> by Aimie
                             </p>
                         </div>
                     </div>

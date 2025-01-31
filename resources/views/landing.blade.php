@@ -59,10 +59,13 @@
                         <li class="nav-item">
                             <a class="nav-link fw-normal" href="#contactUs">Contact Us</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-normal" href="https://careercounselling4u.uitm.edu.my/index.php/career-article">Career Tips</a>
+                        </li>
                     </ul>
 
                     <div class="">
-                        <a href="{{ route('login') }}" class="btn btn-soft-primary"><i
+                        <a href="{{ route('login') }}" class="btn btn-primary"><i
                                 class="ri-user-3-line align-bottom me-1"></i> Login & Register</a>
                     </div>
                 </div>
@@ -76,53 +79,20 @@
             style="background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('assets/images/UITM.jpg'); background-size: cover; background-position: center; background-attachment: fixed; height: 100vh; overflow: hidden;">
             <div class="container h-100">
                 <div class="row h-100 justify-content-center align-items-center">
-                    <div class="col-lg-8 text-center">
-                        <div class="mb-5">
-                            <h1 class="display-4 fw-bold text-primary mb-3">Welcome to UITM JobShop</h1>
-                            <p class="lead text-dark mb-5">Find jobs, create trackable resumes and enrich your
-                                applications. Carefully crafted after analyzing the needs of different industries.</p>
-                        </div>
-
-                        <div class="job-search-form bg-white p-4 rounded-3 shadow-lg mx-auto" style="max-width: 600px;">
-                            <form action="#" class="job-panel-filter">
-                                <div class="row g-3">
-                                    <div class="col-md-5">
-                                        <div class="form-floating">
-                                            <input type="search" id="job-title" class="form-control"
-                                                placeholder="Search jobs">
-                                            <label for="job-title" class="text-start"><i
-                                                    class="ri-search-line me-2"></i>Job or Company</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-floating">
-                                            <select class="form-select" data-choices id="job-type">
-                                                <option value="">Select type</option>
-                                                <option value="Full Time">Full Time</option>
-                                                <option value="Part Time">Part Time</option>
-                                                <option value="Freelance">Freelance</option>
-                                                <option value="Internship">Internship</option>
-                                            </select>
-                                            <label for="job-type" class="text-start"><i
-                                                    class="ri-briefcase-line me-2"></i>Job Type</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button class="btn btn-primary w-100 h-100 fs-5" type="submit">
-                                            Find Jobs
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="mt-4">
-                            <div class="d-inline-block px-4 py-2 bg-light rounded-pill">
-                                <span class="text-dark fw-semibold me-2">Popular Searches:</span>
-                                <a href="#" class="badge bg-primary-subtle text-primary m-1">Design</a>
-                                <a href="#" class="badge bg-primary-subtle text-primary m-1">Development</a>
-                                <a href="#" class="badge bg-primary-subtle text-primary m-1">Manager</a>
-                                <a href="#" class="badge bg-primary-subtle text-primary m-1">Senior</a>
+                    <div class="col-lg-8 text-center" style="margin-top: -100px">
+                        <div class="mb-5 text-center">
+                            <h1 class="display-4 fw-bold text-primary mb-4 animate__animated animate__fadeInDown animate__faster">
+                                Welcome to <span class="text-dark">UiTM</span> <span class="text-gradient">JobShop</span>
+                            </h1>
+                            <p class="lead text-dark fw-semibold mb-5 animate__animated animate__fadeInUp animate__delay-1s">
+                                Find your dream career, build professional resumes, and take the next step in your journey.<br>
+                                <span class="text-primary fw-bold fst-italic">Your success story begins here.</span>
+                            </p>
+                            <div class="animate__animated animate__fadeInUp animate__delay-2s">
+                                <a href="{{ route('register') }}" class="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-lg hover-lift">
+                                    <i class="ri-user-add-line me-2"></i>
+                                    <span class="fw-semibold">Join Now</span>
+                                </a>
                             </div>
                         </div>
                     </div>

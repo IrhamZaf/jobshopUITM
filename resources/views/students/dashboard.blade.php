@@ -23,114 +23,483 @@
         </div>
         <!-- end page title -->
 
+
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="d-flex flex-column h-100">
                     <div class="row">
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-height-100">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1 p-3">
-                                        <h5 class="mb-3">Application</h5>
-                                        <p class="mb-0 text-muted fs-13"><span class="badge bg-light text-success mb-0"> <i class="ri-arrow-up-line align-middle"></i> 16.24 % </span> vs. previous month</p>
-                                    </div>
-                                    <div>
-                                        <div class="apex-charts" data-colors='["--vz-success" , "--vz-transparent"]' dir="ltr" id="results_sparkline_charts3"></div>
-                                    </div>
+                        <div class="col-xl-6 col-md-6">
+                            <div class="card card-animate overflow-hidden">
+                                <div class="position-absolute start-0" style="z-index: 0;">
+                                    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+                                        <style>
+                                            .s0 {
+                                                opacity: .05;
+                                                fill: var(--vz-primary)
+                                            }
+                                        </style>
+                                        <path id="Shape 8" class="s0" d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z" />
+                                    </svg>
                                 </div>
-                            </div>
-                        </div><!--end col-->
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-height-100">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1 p-3">
-                                        <h5 class="mb-3">Interviewed</h5>
-                                        <p class="mb-0 text-muted fs-13"><span class="badge bg-light text-success mb-0"> <i class="ri-arrow-up-line align-middle"></i> 34.24 % </span> vs. previous month</p>
-                                    </div>
-                                    <div>
-                                        <div class="apex-charts" data-colors='["--vz-success" , "--vz-transparent"]' dir="ltr" id="results_sparkline_charts4"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--end col-->
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-height-100">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1 p-3">
-                                        <h5 class="mb-3">Hired</h5>
-                                        <p class="mb-0 text-muted fs-13"><span class="badge bg-light text-success mb-0"> <i class="ri-arrow-up-line align-middle"></i> 6.67 % </span> vs. previous month</p>
-                                    </div>
-                                    <div>
-                                        <div class="apex-charts" data-colors='["--vz-success" , "--vz-transparent"]' dir="ltr" id="results_sparkline_charts"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--end col-->
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-height-100">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1 p-3">
-                                        <h5 class="mb-3">Rejected</h5>
-                                        <p class="mb-0 text-muted fs-13"><span class="badge bg-light text-danger mb-0"> <i class="ri-arrow-down-line align-middle"></i> 3.24 % </span> vs. previous month</p>
-                                    </div>
-                                    <div>
-                                        <div class="apex-charts" data-colors='["--vz-danger", "--vz-transparent"]' dir="ltr" id="results_sparkline_charts2"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--end col-->
-                    </div><!--end row-->
-
-
-
-                    <div class="row">
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card card-height-100">
-                                <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Your Network Summary</h4>
-                                    <div class="flex-shrink-0">
-                                        <div class="dropdown card-header-dropdown">
-                                            <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="fw-semibold text-uppercase fs-12">Sort by: </span><span class="text-muted">Monthly<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="#">Today</a>
-                                                <a class="dropdown-item" href="#">Weekly</a>
-                                                <a class="dropdown-item" href="#">Monthly</a>
-                                                <a class="dropdown-item" href="#">Yearly</a>
-                                            </div>
+                                <div class="card-body" style="z-index:1 ;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <p class="text-uppercase fw-medium text-muted text-truncate mb-3"> Total Jobs</p>
+                                            <h4 class="fs-22 fw-semibold ff-secondary mb-0"><span class="counter-value" data-target="36894">0</span></h4>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div id="total_jobs" data-colors='["--vz-success"]' class="apex-charts" dir="ltr"></div>
                                         </div>
                                     </div>
-                                </div><!-- end card header -->
-                                <div class="card-body pb-0">
-                                    <div id="deal-type-charts" data-colors='["--vz-primary", "--vz-secondary"]' class="apex-charts" dir="ltr"></div>
+                                </div><!-- end card body -->
+                            </div><!-- end card -->
+                        </div><!--end col-->
+                        <div class="col-xl-6 col-md-6">
+                            <!-- card -->
+                            <div class="card card-animate overflow-hidden">
+                                <div class="position-absolute start-0" style="z-index: 0;">
+                                    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+                                        <style>
+                                            .s0 {
+                                                opacity: .05;
+                                                fill: var(--vz-primary)
+                                            }
+                                        </style>
+                                        <path id="Shape 8" class="s0" d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z" />
+                                    </svg>
+                                </div>
+                                <div class="card-body" style="z-index:1 ;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <p class="text-uppercase fw-medium text-muted text-truncate mb-3"> Apply Jobs</p>
+                                            <h4 class="fs-22 fw-semibold ff-secondary mb-0"><span class="counter-value" data-target="28410">0</span></h4>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div id="apply_jobs" data-colors='["--vz-success"]' class="apex-charts" dir="ltr"></div>
+                                        </div>
+                                    </div>
                                 </div><!-- end card body -->
                             </div><!-- end card -->
                         </div><!-- end col -->
-                        
-                        <div class="col-xxl-8 col-md-6">
-                            <div class="card card-height-100">
-                                <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Jobs Summary</h4>
-                                    <div class="flex-shrink-0">
-                                        <div class="dropdown card-header-dropdown">
-                                            <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="fw-semibold text-uppercase fs-12">Sort by: </span><span class="text-muted">Current Year<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="#">Today</a>
-                                                <a class="dropdown-item" href="#">Last Week</a>
-                                                <a class="dropdown-item" href="#">Last Month</a>
-                                                <a class="dropdown-item" href="#">Current Year</a>
-                                            </div>
+                        <div class="col-xl-6 col-md-6">
+                            <!-- card -->
+                            <div class="card card-animate overflow-hidden">
+                                <div class="position-absolute start-0" style="z-index: 0;">
+                                    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+                                        <style>
+                                            .s0 {
+                                                opacity: .05;
+                                                fill: var(--vz-primary)
+                                            }
+                                        </style>
+                                        <path id="Shape 8" class="s0" d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z" />
+                                    </svg>
+                                </div>
+                                <div class="card-body" style="z-index:1 ;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <p class="text-uppercase fw-medium text-muted text-truncate mb-3">New Jobs</p>
+                                            <h4 class="fs-22 fw-semibold ff-secondary mb-0"><span class="counter-value" data-target="4305">0</span></h4>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div id="new_jobs_chart" data-colors='["--vz-success"]' class="apex-charts" dir="ltr"></div>
                                         </div>
                                     </div>
-                                </div><!-- end card header -->
-                                <div class="card-body px-0">
-                                    <div id="revenue-expenses-charts" data-colors='["--vz-info","--vz-secondary", "--vz-primary", "--vz-danger"]' class="apex-charts" dir="ltr"></div>
-                                </div>
+                                </div><!-- end card body -->
                             </div><!-- end card -->
                         </div><!-- end col -->
+                        <div class="col-xl-6 col-md-6">
+                            <!-- card -->
+                            <div class="card card-animate overflow-hidden">
+                                <div class="position-absolute start-0" style="z-index: 0;">
+                                    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+                                        <style>
+                                            .s0 {
+                                                opacity: .05;
+                                                fill: var(--vz-primary)
+                                            }
+                                        </style>
+                                        <path id="Shape 8" class="s0" d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z" />
+                                    </svg>
+                                </div>
+                                <div class="card-body" style="z-index:1 ;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <p class="text-uppercase fw-medium text-muted text-truncate mb-3"> Interview</p>
+                                            <h4 class="fs-22 fw-semibold ff-secondary mb-0"><span class="counter-value" data-target="5021">0</span></h4>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div id="interview_chart" data-colors='["--vz-danger"]' class="apex-charts" dir="ltr"></div>
+                                        </div>
+                                    </div>
+                                </div><!-- end card body -->
+                            </div><!-- end card -->
+                        </div><!-- end col -->
+                        <div class="col-xl-6 col-md-6">
+                            <div class="card card-animate overflow-hidden">
+                                <div class="position-absolute start-0" style="z-index: 0;">
+                                    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+                                        <style>
+                                            .s0 {
+                                                opacity: .05;
+                                                fill: var(--vz-primary)
+                                            }
+                                        </style>
+                                        <path id="Shape 8" class="s0" d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z" />
+                                    </svg>
+                                </div>
+                                <div class="card-body" style="z-index:1 ;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <p class="text-uppercase fw-medium text-muted text-truncate mb-3"> Hired</p>
+                                            <h4 class="fs-22 fw-semibold ff-secondary mb-0"><span class="counter-value" data-target="3948">0</span></h4>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div id="hired_chart" data-colors='["--vz-success"]' class="apex-charts" dir="ltr"></div>
+                                        </div>
+                                    </div>
+                                </div><!-- end card body -->
+                            </div><!-- end card -->
+                        </div><!--end col-->
+                        <div class="col-xl-6 col-md-6">
+                            <!-- card -->
+                            <div class="card card-animate overflow-hidden">
+                                <div class="position-absolute start-0" style="z-index: 0;">
+                                    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+                                        <style>
+                                            .s0 {
+                                                opacity: .05;
+                                                fill: var(--vz-primary)
+                                            }
+                                        </style>
+                                        <path id="Shape 8" class="s0" d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z" />
+                                    </svg>
+                                </div>
+                                <div class="card-body" style="z-index:1 ;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <p class="text-uppercase fw-medium text-muted text-truncate mb-3">Rejected</p>
+                                            <h4 class="fs-22 fw-semibold ff-secondary mb-0"><span class="counter-value" data-target="1340">0</span></h4>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div id="rejected_chart" data-colors='["--vz-danger"]' class="apex-charts" dir="ltr"></div>
+                                        </div>
+                                    </div>
+                                </div><!-- end card body -->
+                            </div><!-- end card -->
+                        </div><!-- end col -->
+                    </div><!--end row-->
+                </div>
+            </div><!--end col-->
+            <div class="col-xl-6">
+                <div class="card card-height-100">
+                    <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Featured Companies</h4>
+                        <div class="flex-shrink-0">
+                            <a href="#!" class="btn btn-soft-primary btn-sm">View All Companies <i class="ri-arrow-right-line align-bottom"></i></a>
+                        </div>
+                    </div><!-- end card header -->
+
+                    <div class="card-body">
+                        <div class="table-responsive table-card">
+                            <table class="table table-centered table-hover align-middle table-nowrap mb-0">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar-xs me-2 flex-shrink-0">
+                                                    <div class="avatar-title bg-soft-secondary rounded">
+                                                        <img src="assets/images/companies/img-1.png" alt="" height="16">
+                                                    </div>
+                                                </div>
+                                                <h6 class="mb-0">Force Medicines</h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> Cullera, Spain
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-secondary"><i class="ri-facebook-fill"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-danger"><i class="ri-mail-line"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-primary"><i class="ri-global-line"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-info"><i class="ri-twitter-line"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-link btn-sm">View More <i class="ri-arrow-right-line align-bottom"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar-xs me-2 flex-shrink-0">
+                                                    <div class="avatar-title bg-soft-warning rounded">
+                                                        <img src="assets/images/companies/img-3.png" alt="" height="16">
+                                                    </div>
+                                                </div>
+                                                <h6 class="mb-0">Syntyce Solutions</h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> Mughairah, UAE
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-secondary"><i class="ri-facebook-fill"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-danger"><i class="ri-mail-line"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-primary"><i class="ri-global-line"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-info"><i class="ri-twitter-line"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-link btn-sm">View More <i class="ri-arrow-right-line align-bottom"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar-xs me-2 flex-shrink-0">
+                                                    <div class="avatar-title bg-soft-primary rounded">
+                                                        <img src="assets/images/companies/img-2.png" alt="" height="16">
+                                                    </div>
+                                                </div>
+                                                <h6 class="mb-0">Moetic Fashion</h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> Mughairah, UAE
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-secondary"><i class="ri-facebook-fill"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-danger"><i class="ri-mail-line"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-primary"><i class="ri-global-line"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-info"><i class="ri-twitter-line"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-link btn-sm">View More <i class="ri-arrow-right-line align-bottom"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar-xs me-2 flex-shrink-0">
+                                                    <div class="avatar-title bg-soft-danger rounded">
+                                                        <img src="assets/images/companies/img-4.png" alt="" height="16">
+                                                    </div>
+                                                </div>
+                                                <h6 class="mb-0">Meta4Systems</h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> Germany
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-secondary"><i class="ri-facebook-fill"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-danger"><i class="ri-mail-line"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-primary"><i class="ri-global-line"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-info"><i class="ri-twitter-line"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-link btn-sm">View More <i class="ri-arrow-right-line align-bottom"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar-xs me-2 flex-shrink-0">
+                                                    <div class="avatar-title bg-soft-danger rounded">
+                                                        <img src="assets/images/companies/img-5.png" alt="" height="16">
+                                                    </div>
+                                                </div>
+                                                <h6 class="mb-0">Themesbrand</h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> Limestone, US
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-secondary"><i class="ri-facebook-fill"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-danger"><i class="ri-mail-line"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-primary"><i class="ri-global-line"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#!" class="link-info"><i class="ri-twitter-line"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <a href="#!" class="btn btn-link btn-sm">View More <i class="ri-arrow-right-line align-bottom"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="align-items-center mt-4 pt-2 justify-content-between d-flex">
+                            <div class="flex-shrink-0">
+                                <div class="text-muted">
+                                    Showing <span class="fw-semibold">5</span> of <span class="fw-semibold">25</span> Results
+                                </div>
+                            </div>
+                            <ul class="pagination pagination-separated pagination-sm mb-0">
+                                <li class="page-item disabled">
+                                    <a href="#" class="page-link">←</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">1</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a href="#" class="page-link">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">→</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- .card-->
+            </div><!--end col-->
+        </div><!--end row-->
+        
+        <div class="row">
+            <div class="col-xxl-12">
+                <div class="card card-height-100">
+                    <div class="card-header border-0 align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Applications Statistic</h4>
+                        <div>
+                            <button type="button" class="btn btn-soft-secondary btn-sm">
+                                ALL
+                            </button>
+                            <button type="button" class="btn btn-soft-secondary btn-sm">
+                                1M
+                            </button>
+                            <button type="button" class="btn btn-soft-secondary btn-sm">
+                                6M
+                            </button>
+                            <button type="button" class="btn btn-soft-primary btn-sm">
+                                1Y
+                            </button>
+                        </div>
+                    </div><!-- end card header -->
+        
+                    <div class="card-header p-0 border-0 bg-soft-light">
+                        <div class="row g-0 text-center">
+                            <div class="col-6 col-sm-3">
+                                <div class="p-3 border border-dashed border-start-0">
+                                    <h5 class="mb-1"><span class="counter-value" data-target="3364">0</span></h5>
+                                    <p class="text-muted mb-0">New Applications</p>
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-6 col-sm-3">
+                                <div class="p-3 border border-dashed border-start-0">
+                                    <h5 class="mb-1"><span class="counter-value" data-target="2804">0</span></h5>
+                                    <p class="text-muted mb-0">Interview</p>
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-6 col-sm-3">
+                                <div class="p-3 border border-dashed border-start-0">
+                                    <h5 class="mb-1"><span class="counter-value" data-target="2402">0</span></h5>
+                                    <p class="text-muted mb-0">Hired</p>
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-6 col-sm-3">
+                                <div class="p-3 border border-dashed border-start-0 border-end-0">
+                                    <h5 class="mb-1 text-success"><span class="counter-value" data-target="8">0</span>k</h5>
+                                    <p class="text-muted mb-0">Total Applications</p>
+                                </div>
+                            </div>
+                            <!--end col-->
+                        </div>
+                    </div><!-- end card header -->
+        
+                    <div class="card-body p-0 pb-2">
+                        <div class="w-100">
+                            <div id="line_chart_dashed" data-colors='["--vz-secondary", "--vz-info", "--vz-primary"]' class="apex-charts" dir="ltr"></div>
+                        </div>
+                    </div><!-- end card body -->
+                </div><!-- end card -->
+            </div><!-- end col -->
+
+        </div><!--end row-->
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row g-4 align-items-center">
+                            <div class="col-sm-auto">
+                                <div>
+                                    <h4 class="card-title mb-0 flex-grow-1">Recomended Jobs</h4>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="d-flex justify-content-sm-end">
+                                    <div class="search-box ms-2">
+                                        <input type="text" class="form-control" id="searchResultList" placeholder="Search for jobs...">
+                                        <i class="ri-search-line search-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="recomended-jobs" class="table-card"></div>
                     </div>
                 </div>
-                <!-- container-fluid -->
-            </div>
-            <!-- End Page-content -->
+            </div><!--end col-->
+        </div><!--end row-->
+        
+        
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
 @endsection

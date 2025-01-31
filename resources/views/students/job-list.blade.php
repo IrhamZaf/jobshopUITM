@@ -132,12 +132,12 @@
                                     </span>
                                     @if($job->salary_min && $job->salary_max)
                                         <span class="badge bg-primary-subtle text-light">
-                                            ${{ number_format($job->salary_min) }} - ${{ number_format($job->salary_max) }}
+                                            RM {{ number_format($job->salary_min) }} - RM {{ number_format($job->salary_max) }}
                                         </span>
                                     @endif
                                 </div>
                                 <div class="mt-4 hstack gap-2">
-                                    <a href="#!" class="btn btn-primary w-100">Apply Job</a>
+                                    {{-- <a href="#!" class="btn btn-primary w-100">Apply Job</a> --}}
                                     <a href="{{ route('students.jobpreview', $job->id) }}" 
                                        class="btn btn-success w-100">Overview</a>
                                 </div>

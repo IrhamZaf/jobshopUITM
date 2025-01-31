@@ -44,7 +44,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('company.joblist') }}" >
                         <i class="ri-briefcase-2-line"></i> <span data-key="t-jobs">Job List</span>
                     </a>
@@ -54,7 +54,7 @@
                     <a class="nav-link menu-link" href="{{ route('company.candidate') }}" >
                         <i class="ri-user-2-line"></i> <span data-key="t-jobs">Candidate</span>
                     </a>
-                </li>
+                </li> --}}
 
 
             </ul>
