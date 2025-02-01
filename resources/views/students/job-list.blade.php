@@ -103,7 +103,7 @@
             <div class="row" id="job-list">
                 @forelse ($jobs as $job)
                     <div class="col-lg-3 col-md-6">
-                        <div class="card bg-secondary">
+                        <div class="card bg-secondary h-90">
                             <div class="card-body">
                                 <div class="avatar-sm mb-4">
                                     <div class="avatar-title bg-light rounded">
