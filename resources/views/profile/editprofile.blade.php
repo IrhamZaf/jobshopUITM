@@ -18,7 +18,7 @@
                     <div class="card mt-n5">
                         <div class="card-body p-4">
                             <div class="text-center">
-                                <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
+                                {{-- <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
                                     <img src="assets/images/users/avatar-1.jpg"
                                         class="rounded-circle avatar-xl img-thumbnail user-profile-image"
                                         alt="user-profile-image">
@@ -30,7 +30,7 @@
                                             </span>
                                         </label>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <h5 class="fs-16 mb-1">{{ $user->first_name }} {{ $user->last_name }}</h5>
                                 <p class="text-muted mb-0">{{ $user->role }} / {{ $user->role }}</p>
                             </div>
@@ -161,49 +161,55 @@
                                 </div>
                                 <!--end tab-pane-->
                                 <div class="tab-pane" id="changePassword" role="tabpanel">
-                                    <form action="javascript:void(0);">
+                                    <form action="{{ route('update.password') }}" method="POST">
+                                        @csrf
                                         <div class="row g-2">
                                             <div class="col-lg-4">
                                                 <div>
                                                     <label for="oldpasswordInput" class="form-label">Old Password*</label>
-                                                    <input type="password" class="form-control" id="oldpasswordInput"
-                                                        placeholder="Enter current password">
+                                                    <div class="position-relative">
+                                                        <input type="password" class="form-control @error('current_password') is-invalid @enderror" 
+                                                            name="current_password" id="oldpasswordInput" placeholder="Enter current password">
+                                                        <i class="ri-eye-line password-toggle" data-target="oldpasswordInput"></i>
+                                                    </div>
+                                                    @error('current_password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                             </div>
-                                            <!--end col-->
                                             <div class="col-lg-4">
                                                 <div>
                                                     <label for="newpasswordInput" class="form-label">New Password*</label>
-                                                    <input type="password" class="form-control" id="newpasswordInput"
-                                                        placeholder="Enter new password">
+                                                    <div class="position-relative">
+                                                        <input type="password" class="form-control @error('new_password') is-invalid @enderror" 
+                                                            name="new_password" id="newpasswordInput" placeholder="Enter new password">
+                                                        <i class="ri-eye-line password-toggle" data-target="newpasswordInput"></i>
+                                                    </div>
+                                                    @error('new_password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                             </div>
-                                            <!--end col-->
                                             <div class="col-lg-4">
                                                 <div>
-                                                    <label for="confirmpasswordInput" class="form-label">Confirm
-                                                        Password*</label>
-                                                    <input type="password" class="form-control" id="confirmpasswordInput"
-                                                        placeholder="Confirm password">
+                                                    <label for="confirmpasswordInput" class="form-label">Confirm Password*</label>
+                                                    <div class="position-relative">
+                                                        <input type="password" class="form-control @error('new_password_confirmation') is-invalid @enderror" 
+                                                            name="new_password_confirmation" id="confirmpasswordInput" placeholder="Confirm password">
+                                                        <i class="ri-eye-line password-toggle" data-target="confirmpasswordInput"></i>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <!--end col-->
-                                            <div class="col-lg-12">
-                                                <div class="mb-3">
-                                                    <a href="javascript:void(0);"
-                                                        class="link-primary text-decoration-underline">Forgot Password
-                                                        ?</a>
-                                                </div>
-                                            </div>
-                                            <!--end col-->
                                             <div class="col-lg-12">
                                                 <div class="text-end">
                                                     <button type="submit" class="btn btn-info">Change Password</button>
                                                 </div>
                                             </div>
-                                            <!--end col-->
                                         </div>
-                                        <!--end row-->
                                     </form>
                                 </div>
                                 <!--end tab-pane-->
@@ -211,19 +217,30 @@
                                 <div class="tab-pane" id="privacy" role="tabpanel">
                                     <div>
                                         <h5 class="card-title text-decoration-underline mb-3">Delete This Account:</h5>
-                                        <p class="text-muted">Go to the Data & Privacy section of your profile Account.
-                                            Scroll to "Your data & privacy options." Delete your Profile Account. Follow the
-                                            instructions to delete your account :</p>
-                                        <div>
-                                            <input type="password" class="form-control" id="passwordInput"
-                                                placeholder="Enter your password" value="make@321654987"
-                                                style="max-width: 265px;">
-                                        </div>
-                                        <div class="hstack gap-2 mt-3">
-                                            <a href="javascript:void(0);" class="btn btn-soft-info">Close & Delete This
-                                                Account</a>
-                                            <a href="javascript:void(0);" class="btn btn-light">Cancel</a>
-                                        </div>
+                                        <p class="text-muted">Warning: This action cannot be undone. Once you delete your account, all of your data will be permanently removed.</p>
+                                        <form action="{{ route('delete.account') }}" method="POST" id="deleteAccountForm">
+                                            @csrf
+                                            <div>
+                                                <label for="delete_password" class="form-label">Please enter your password to confirm:</label>
+                                                <div class="position-relative" style="max-width: 265px;">
+                                                    <input type="password" class="form-control @error('delete_password') is-invalid @enderror" 
+                                                        id="delete_password" name="delete_password" 
+                                                        placeholder="Enter your password">
+                                                    <i class="ri-eye-line password-toggle" data-target="delete_password"></i>
+                                                    @error('delete_password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="hstack gap-2 mt-3">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                                                    Delete Account
+                                                </button>
+                                                <button type="button" class="btn btn-light">Cancel</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <!--end tab-pane-->
@@ -238,4 +255,66 @@
         </div>
         <!-- container-fluid -->
     </div><!-- End Page-content -->
+
+    <style>
+        .position-relative {
+            position: relative;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #6c757d;
+        }
+        .password-toggle:hover {
+            color: #000;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggles = document.querySelectorAll('.password-toggle');
+            
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const passwordInput = document.getElementById(targetId);
+                    
+                    // Toggle password visibility
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        this.classList.remove('ri-eye-line');
+                        this.classList.add('ri-eye-off-line');
+                    } else {
+                        passwordInput.type = 'password';
+                        this.classList.remove('ri-eye-off-line');
+                        this.classList.add('ri-eye-line');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Delete Account Confirmation Modal -->
+    <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteAccountModalLabel">Confirm Account Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete your account? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="document.getElementById('deleteAccountForm').submit();">
+                        Yes, Delete My Account
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

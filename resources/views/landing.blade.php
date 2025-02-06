@@ -617,23 +617,48 @@
                     <div class="col-md-6 d-flex">
                         <div class="card shadow-lg border-0 mb-4 flex-fill">
                             <div class="card-body p-4">
-                                <h5 class="fw-semibold text-dark mb-3">Email Us</h5>
-                                <form action="#" method="post">
+                                <h5 class="fw-semibold text-dark ">Send Feedback</h5>
+                                <p class="text-muted ">We value your feedback. Help us improve our services.</p>
+                                
+                                @if(session('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                @endif
+
+                                <form action="{{ route('feedback.store') }}" method="POST">
+                                    @csrf
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name"
-                                            placeholder="Your Name" required>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" 
+                                               name="name" id="name" value="{{ old('name') }}" 
+                                               placeholder="Your Name" required>
+                                        @error('name')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email"
-                                            placeholder="Your Email" required>
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                                               name="email" id="email" value="{{ old('email') }}" 
+                                               placeholder="Your Email" required>
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="message" class="form-label">Message</label>
-                                        <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+                                        <label for="message" class="form-label">Your Feedback</label>
+                                        <textarea class="form-control @error('message') is-invalid @enderror" 
+                                                  name="message" id="message" rows="4" 
+                                                  placeholder="Please share your thoughts, suggestions, or concerns">{{ old('message') }}</textarea>
+                                        @error('message')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary w-100">Send</button>
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        <i class="ri-send-plane-line me-1"></i> Send Feedback
+                                    </button>
                                 </form>
                             </div>
                         </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class ProfileController extends Controller
 {
@@ -42,5 +44,55 @@ class ProfileController extends Controller
         } else {
             return redirect()->route('editprofile')->with('error', 'Failed to update profile. Please try again.');
         }
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', function ($attribute, $value, $fail) {
+                if (!Hash::check($value, Auth::user()->password)) {
+                    $fail('The current password is incorrect.');
+                }
+            }],
+            'new_password' => ['required', 'confirmed', Password::defaults()],
+        ]);
+
+        $user = Auth::user();
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Password updated successfully!');
+    }
+
+    public function deleteAccount(Request $request)
+    {
+        $request->validate([
+            'delete_password' => 'required',
+        ]);
+
+        $user = Auth::user();
+        
+        // Verify password
+        if (!Hash::check($request->delete_password, $user->password)) {
+            return back()->withErrors([
+                'delete_password' => 'The password you entered is incorrect.',
+            ]);
+        }
+
+        // Store the user to delete
+        $userToDelete = $user;
+
+        // First logout the user
+        Auth::logout();
+        
+        // Clear the session
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
+        // Delete the user
+        $userToDelete->delete();
+
+        // Redirect to login page with message
+        return redirect()->route('login')->with('success', 'Your account has been successfully deleted. Thank you for using our service.');
     }
 }

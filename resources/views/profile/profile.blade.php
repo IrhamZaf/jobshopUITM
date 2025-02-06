@@ -102,13 +102,13 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="flex-grow-1 overflow-hidden">
-                                                                                <p class="mb-1">Designation :</p>
+                                                                                <p class="mb-1">Role :</p>
                                                                                 <h6 class="text-truncate mb-0">{{ Auth::user()->role }}</h6>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <!--end col-->
-                                                                    <div class="col-6 col-md-4">
+                                                                    {{-- <div class="col-6 col-md-4">
                                                                         <div class="d-flex mt-4">
                                                                             <div class="flex-shrink-0 avatar-xs align-self-center me-3">
                                                                                 <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
@@ -120,7 +120,7 @@
                                                                                 <a href="#" class="fw-semibold">www.velzon.com</a>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </div> --}}
                                                                     <!--end col-->
                                                                 </div>
                                                                 <!--end row-->

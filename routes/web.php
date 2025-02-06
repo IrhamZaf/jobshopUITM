@@ -7,6 +7,8 @@ use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\FeedbackController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,8 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', function () {
     return view('landing');
 });
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
+
 
 
 
@@ -60,27 +64,9 @@ Route::get('/profile', function () {
 
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('editprofile');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('updateprofile');
+Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('update.password');
+Route::post('/delete-account', [ProfileController::class, 'deleteAccount'])->name('delete.account');
 
-// Route::group(['middleware' => ['role:admin']], function () {
-//     // Admin routes
-//     Route::get('/admin/dashboard', function () {
-//         return view('admin.dashboard');
-//     })->name('admin.dashboard');
-// });
-
-// Route::group(['middleware' => ['role:company']], function () {
-//     // Company routes
-//     Route::get('/company/dashboard', function () {
-//         return view('company.dashboard');
-//     })->name('company.dashboard');
-// });
-
-// Route::group(['middleware' => ['role:student']], function () {
-//     // Student routes
-//     Route::get('/student/dashboard', function () {
-//         return view('student.dashboard');
-//     })->name('student.dashboard');
-// });
 
 // Add resource routes for job postings (for companies to manage their jobs)
 Route::resource('job-postings', JobPostingController::class);
