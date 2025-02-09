@@ -172,6 +172,9 @@
     <!-- End Page-content -->
 
     <script>
+        // Modify the base URL generation to use the correct parameter name 'jobPosting'
+        const jobPreviewBaseUrl = "{{ route('students.jobpreview', ['jobPosting' => 'JOBID']) }}".replace('/JOBID', '');
+
         function debounce(func, wait) {
             let timeout;
             return function executedFunction(...args) {
@@ -205,19 +208,22 @@
 
             console.log('Filter values:', { searchJob, searchLocation, employmentType });
 
-            // Make AJAX request with modified URL handling for empty employment type
+            // Make AJAX request
             const url = `/students/jobs/filter?search=${encodeURIComponent(searchJob)}&location=${encodeURIComponent(searchLocation)}${employmentType ? `&type=${encodeURIComponent(employmentType)}` : ''}`;
             
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
+                    // Filter jobs with status 'open'
+                    const openJobs = data.filter(job => job.status === 'open');
+
                     // Update total results count
-                    document.getElementById('total-result').textContent = `${data.length} Jobs`;
+                    document.getElementById('total-result').textContent = `${openJobs.length} Jobs`;
         
                     // Update the job list
                     jobList.innerHTML = '';
         
-                    if (data.length === 0) {
+                    if (openJobs.length === 0) {
                         jobList.innerHTML = `
                             <div class="col-12">
                                 <div class="text-center">
@@ -228,7 +234,7 @@
                     }
         
                     // Render jobs
-                    data.forEach(job => {
+                    openJobs.forEach(job => {
                         const companyLogo = job.user?.company_logo || '{{ asset("assets/images/companies/img-1.png") }}';
                         const companyName = job.user?.company_name || 'Company Name';
                         const location = job.location || 'Location';
@@ -281,7 +287,7 @@
                                                     </span>
                                                 ` : ''}
                                             </div>
-                                            <a href="{{ route('students.jobpreview', $job->id) }}" class="btn btn-success w-100">Overview</a>
+                                            <a href="${jobPreviewBaseUrl}/${job.id}" class="btn btn-success w-100">Overview</a>
                                         </div>
                                     </div>
                                 </div>
@@ -338,8 +344,8 @@
                     </div>
                 </div>`;
 
-            // Make a fresh request to get all jobs
-            fetch('/students/jobs/filter')
+            // Make a fresh request to get all open jobs
+            fetch('/students/jobs/filter?status=open')
                 .then(response => response.json())
                 .then(data => {
                     // Update total results count
@@ -411,7 +417,7 @@
                                                     </span>
                                                 ` : ''}
                                             </div>
-                                            <a href="{{ route('students.jobpreview', $job->id) }}" class="btn btn-success w-100">Overview</a>
+                                            <a href="${jobPreviewBaseUrl}/${job.id}" class="btn btn-success w-100">Overview</a>
                                         </div>
                                     </div>
                                 </div>
