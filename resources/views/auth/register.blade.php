@@ -42,7 +42,7 @@
                                         <div class="bg-overlay"></div>
                                         <div class="position-relative h-100 d-flex flex-column">
                                             <div class="mb-4">
-                                                <a href="index.html" class="d-block">
+                                                <a href="{{ route('landing') }}" class="d-block">
                                                     <img src="assets/images/logo-jobshop1.png" alt="" height="70">
                                                 </a>
                                             </div>
